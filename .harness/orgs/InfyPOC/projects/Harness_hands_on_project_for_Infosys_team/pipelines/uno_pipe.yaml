@@ -1,0 +1,43 @@
+pipeline:
+  name: uno_pipe
+  identifier: uno_pipe
+  projectIdentifier: Harness_hands_on_project_for_Infosys_team
+  orgIdentifier: InfyPOC
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: gitSangeeth
+        build: <+input>
+  stages:
+    - stage:
+        name: build_app
+        identifier: build_app
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: kubeHarness
+              namespace: harness-delegate
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Windows
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: code compile
+                  identifier: code_compile
+                  spec:
+                    connectorRef: docker_quickstart
+                    image: python:3.10.6-alpine
+                    shell: Sh
+                    command: python -m compileall ./
+        when:
+          pipelineStatus: Success
