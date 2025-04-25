@@ -24,7 +24,7 @@ pipeline:
             type: KubernetesDirect
             spec:
               connectorRef: kubeHarness
-              namespace: harness-delegate
+              namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Windows
