@@ -39,5 +39,14 @@ pipeline:
                     image: python:3.10.6-alpine
                     shell: Sh
                     command: python -m compileall ./
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: create_image
+                  identifier: create_image
+                  spec:
+                    connectorRef: docker_quickstart
+                    repo: hteegnas/samplerepo
+                    tags:
+                      - <+pipeline.sequenceId>
         when:
           pipelineStatus: Success
