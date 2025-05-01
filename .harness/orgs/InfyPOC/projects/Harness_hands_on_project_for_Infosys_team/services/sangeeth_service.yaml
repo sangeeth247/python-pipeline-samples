@@ -1,0 +1,5 @@
+service:
+  name: sangeeth_service
+  identifier: sangeeth_service
+  orgIdentifier: InfyPOC
+  projectIdentifier: Harness_hands_on_project_for_Infosys_team
