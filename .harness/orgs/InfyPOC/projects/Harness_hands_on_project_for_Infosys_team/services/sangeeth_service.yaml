@@ -3,3 +3,32 @@ service:
   identifier: sangeeth_service
   orgIdentifier: InfyPOC
   projectIdentifier: Harness_hands_on_project_for_Infosys_team
+  serviceDefinition:
+    spec:
+      manifests:
+        - manifest:
+            identifier: san
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: gitSangeeth
+                  gitFetchType: Branch
+                  paths:
+                    - config/
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: docker_quickstart
+                imagePath: hteegnas/samplerepo
+                tag: <+input>
+                digest: ""
+              identifier: python_image
+              type: DockerRegistry
+    type: Kubernetes
