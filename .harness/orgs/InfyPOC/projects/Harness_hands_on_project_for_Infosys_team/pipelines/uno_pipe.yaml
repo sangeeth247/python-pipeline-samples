@@ -58,15 +58,7 @@ pipeline:
         spec:
           deploymentType: Kubernetes
           service:
-            serviceRef: sangeeth_service
-            serviceInputs:
-              serviceDefinition:
-                type: Kubernetes
-                spec:
-                  artifacts:
-                    primary:
-                      primaryArtifactRef: <+input>
-                      sources: <+input>
+            serviceRef: harnessguestbook
           environment:
             environmentRef: dev
             gitBranch: main
