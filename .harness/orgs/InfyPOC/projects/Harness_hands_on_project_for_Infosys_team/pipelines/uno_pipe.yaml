@@ -98,3 +98,7 @@ pipeline:
                 - AllErrors
               action:
                 type: StageRollback
+        delegateSelectors:
+          - kubernetes-delegate-sangeeth
+        when:
+          pipelineStatus: Success
