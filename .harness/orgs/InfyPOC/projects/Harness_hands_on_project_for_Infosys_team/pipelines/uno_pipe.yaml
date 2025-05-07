@@ -91,6 +91,6 @@ pipeline:
               action:
                 type: StageRollback
         delegateSelectors:
-          - kubernetes-delegate-sangeeth
+          - kubernetes-delegate-spm
         when:
           pipelineStatus: Success
